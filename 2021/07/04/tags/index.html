@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="大海的博客">
+    <meta name="keywords" content="JDBC笔记, 大海的博客">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>大海的博客</title>
+    <title>JDBC笔记 | 大海的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -244,12 +244,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title"></h1>
+                    <h1 class="description center-align post-title">JDBC笔记</h1>
                 </div>
             </div>
         </div>
@@ -377,7 +377,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-07-02
+                    2021-07-04
                 </div>
                 
 
@@ -398,227 +398,59 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="今日内容"><a href="#今日内容" class="headerlink" title="今日内容"></a>今日内容</h1><pre><code>1. XML
-    1. 概念
-    2. 语法
-    3. 解析
+                <ul>
+<li>JDBC：Java DataBase Connectivity  Java 数据库连接， Java语言操作数据库</li>
+<li>JDBC本质：其实是官方（sun公司）定义的一套操作所有关系型数据库的规则，即接口。各个数据库厂商去实现这套接口，提供数据库驱动jar包。我们可以使用这套接口（JDBC）编程，真正执行的代码是驱动jar包中的实现类。</li>
+</ul>
+<h2 id="快速入门"><a href="#快速入门" class="headerlink" title="快速入门"></a>快速入门</h2><ul>
+<li><p>步骤：</p>
+<ul>
+<li>1.导入驱动jar包 mysql-connector-java-5.1.37-bin.jar<ul>
+<li> 1.复制mysql-connector-java-5.1.37-bin.jar到项目的libs目录下</li>
+<li>   2.右键–&gt;Add As Library</li>
+</ul>
+</li>
+<li>2.注册驱动</li>
+<li>3.获取数据库连接对象 Connection</li>
+<li>4.定义sql</li>
+<li>5.获取执行sql语句的对象 Statement</li>
+<li>6.执行sql，接受返回结果</li>
+<li>7.处理结果</li>
+<li>8.释放资源</li>
+</ul>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"> 1. 导入驱动jar包</span><br><span class="line">2.注册驱动</span><br><span class="line">Class.forName(&quot;com.mysql.jdbc.Driver&quot;);</span><br><span class="line">3.获取数据库连接对象</span><br><span class="line">Connection conn = DriverManager.getConnection(&quot;jdbc:mysql://localhost:3306/db3&quot;, &quot;root&quot;, &quot;root&quot;);</span><br><span class="line">4.定义sql语句</span><br><span class="line">String sql = &quot;update account set balance = 500 where id = 1&quot;;</span><br><span class="line">5.获取执行sql的对象 Statement</span><br><span class="line">Statement stmt = conn.createStatement();</span><br><span class="line">6.执行sql</span><br><span class="line">int count = stmt.executeUpdate(sql);</span><br><span class="line">7.处理结果</span><br><span class="line">System.out.println(count);</span><br><span class="line">8.释放资源</span><br><span class="line">stmt.close();</span><br><span class="line">conn.close();</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="详解各个对象"><a href="#详解各个对象" class="headerlink" title="详解各个对象"></a>详解各个对象</h3><ol>
+<li>DriverManager：驱动管理对象<pre><code>      &lt; 注册驱动：告诉程序该使用哪一个数据库驱动jar
+      &lt; static void registerDriver(Driver driver) :注册与给定的驱动程序 DriverManager 。 
+      &lt; 写代码使用：  Class.forName(&quot;com.mysql.jdbc.Driver&quot;);
+      &lt; 通过查看源码发现：在com.mysql.jdbc.Driver类中存在静态代码块
+      <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">            static &#123;</span><br><span class="line">    try &#123;</span><br><span class="line">        java.sql.DriverManager.registerDriver(new Driver());</span><br><span class="line">    &#125; catch (SQLException E) &#123;</span><br><span class="line">        throw new RuntimeException(&quot;Can&#x27;t register driver!&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      &lt; 注意：mysql5之后的驱动jar包可以省略注册驱动的步骤。
+      &lt; 获取数据库连接：
+      &lt; 方法：static Connection getConnection(String url, String user, String password) 
+      &lt; 参数：
+      &lt; url：指定连接的路径
+      &lt; 语法：jdbc:mysql://ip地址(域名):端口号/数据库名称
+      &lt; 例子：jdbc:mysql://localhost:3306/db3
+      &lt; 细节：如果连接的是本机mysql服务器，并且mysql服务默认端口是3306，则url可以简写为：jdbc:mysql:///数据库名称
+      &lt; user：用户名
+      &lt;  password：密码 
 </code></pre>
-<h2 id="XML："><a href="#XML：" class="headerlink" title="XML："></a>XML：</h2><pre><code>1. 概念：Extensible Markup Language 可扩展标记语言
-    * 可扩展：标签都是自定义的。 &lt;user&gt;  &lt;student&gt;
+</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
 
-    * 功能
-        * 存储数据
-            1. 配置文件
-            2. 在网络中传输
-    * xml与html的区别
-        1. xml标签都是自定义的，html标签是预定义。
-        2. xml的语法严格，html语法松散
-        3. xml是存储数据的，html是展示数据
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
 
-    * w3c:万维网联盟
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
 
-2. 语法：
-    * 基本语法：
-        1. xml文档的后缀名 .xml
-        2. xml第一行必须定义为文档声明
-        3. xml文档中有且仅有一个根标签
-        4. 属性值必须使用引号(单双都可)引起来
-        5. 标签必须正确关闭
-        6. xml标签名称区分大小写
-    * 快速入门：
-        &lt;?xml version=&#39;1.0&#39; ?&gt;
-        &lt;users&gt;
-            &lt;user id=&#39;1&#39;&gt;
-                &lt;name&gt;zhangsan&lt;/name&gt;
-                &lt;age&gt;23&lt;/age&gt;
-                &lt;gender&gt;male&lt;/gender&gt;
-                &lt;br/&gt;
-            &lt;/user&gt;
-            
-            &lt;user id=&#39;2&#39;&gt;
-                &lt;name&gt;lisi&lt;/name&gt;
-                &lt;age&gt;24&lt;/age&gt;
-                &lt;gender&gt;female&lt;/gender&gt;
-            &lt;/user&gt;
-        &lt;/users&gt;
-        
-    * 组成部分：
-        1. 文档声明
-            1. 格式：&lt;?xml 属性列表 ?&gt;
-            2. 属性列表：
-                * version：版本号，必须的属性
-                * encoding：编码方式。告知解析引擎当前文档使用的字符集，默认值：ISO-8859-1
-                * standalone：是否独立
-                    * 取值：
-                        * yes：不依赖其他文件
-                        * no：依赖其他文件
-        2. 指令(了解)：结合css的
-            * &lt;?xml-stylesheet type=&quot;text/css&quot; href=&quot;a.css&quot; ?&gt;
-        3. 标签：标签名称自定义的
-            * 规则：
-                * 名称可以包含字母、数字以及其他的字符 
-                * 名称不能以数字或者标点符号开始 
-                * 名称不能以字母 xml（或者 XML、Xml 等等）开始 
-                * 名称不能包含空格 
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 
-        4. 属性：
-            id属性值唯一
-        5. 文本：
-            * CDATA区：在该区域中的数据会被原样展示
-                * 格式：  &lt;![CDATA[ 数据 ]]&gt;
-
-
-    * 约束：规定xml文档的书写规则
-        * 作为框架的使用者(程序员)：
-            1. 能够在xml中引入约束文档
-            2. 能够简单的读懂约束文档
-        
-        * 分类：
-            1. DTD:一种简单的约束技术
-            2. Schema:一种复杂的约束技术
-
-
-        * DTD：
-            * 引入dtd文档到xml文档中
-                * 内部dtd：将约束规则定义在xml文档中
-                * 外部dtd：将约束的规则定义在外部的dtd文件中
-                    * 本地：&lt;!DOCTYPE 根标签名 SYSTEM &quot;dtd文件的位置&quot;&gt;
-                    * 网络：&lt;!DOCTYPE 根标签名 PUBLIC &quot;dtd文件名字&quot; &quot;dtd文件的位置URL&quot;&gt;
-
-
-        * Schema:
-            * 引入：
-                1.填写xml文档的根元素
-                2.引入xsi前缀.  xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-                3.引入xsd文件命名空间.  xsi:schemaLocation=&quot;http://www.itcast.cn/xml  student.xsd&quot;
-                4.为每一个xsd约束声明一个前缀,作为标识  xmlns=&quot;http://www.itcast.cn/xml&quot; 
-
-            &lt;students   xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-                xmlns=&quot;http://www.itcast.cn/xml&quot;
-                xsi:schemaLocation=&quot;http://www.itcast.cn/xml  student.xsd&quot;&gt;
-
-
-
-3. 解析：操作xml文档，将文档中的数据读取到内存中
-    * 操作xml文档
-        1. 解析(读取)：将文档中的数据读取到内存中
-        2. 写入：将内存中的数据保存到xml文档中。持久化的存储
-
-    * 解析xml的方式：
-        1. DOM：将标记语言文档一次性加载进内存，在内存中形成一颗dom树
-            * 优点：操作方便，可以对文档进行CRUD的所有操作
-            * 缺点：占内存
-        2. SAX：逐行读取，基于事件驱动的。
-            * 优点：不占内存。
-            * 缺点：只能读取，不能增删改
-
-
-    
-    * xml常见的解析器：
-        1. JAXP：sun公司提供的解析器，支持dom和sax两种思想
-        2. DOM4J：一款非常优秀的解析器
-        3. Jsoup：jsoup 是一款Java 的HTML解析器，可直接解析某个URL地址、HTML文本内容。它提供了一套非常省力的API，可通过DOM，CSS以及类似于jQuery的操作方法来取出和操作数据。
-        4. PULL：Android操作系统内置的解析器，sax方式的。
-
-
-    * Jsoup：jsoup 是一款Java 的HTML解析器，可直接解析某个URL地址、HTML文本内容。它提供了一套非常省力的API，可通过DOM，CSS以及类似于jQuery的操作方法来取出和操作数据。
-        * 快速入门：
-            * 步骤：
-                1. 导入jar包
-                2. 获取Document对象
-                3. 获取对应的标签Element对象
-                4. 获取数据
-
-        * 代码：
-             //2.1获取student.xml的path
-            String path = JsoupDemo1.class.getClassLoader().getResource(&quot;student.xml&quot;).getPath();
-            //2.2解析xml文档，加载文档进内存，获取dom树---&gt;Document
-            Document document = Jsoup.parse(new File(path), &quot;utf-8&quot;);
-            //3.获取元素对象 Element
-            Elements elements = document.getElementsByTag(&quot;name&quot;);
-    
-            System.out.println(elements.size());
-            //3.1获取第一个name的Element对象
-            Element element = elements.get(0);
-            //3.2获取数据
-            String name = element.text();
-            System.out.println(name);
-
-    * 对象的使用：
-        1. Jsoup：工具类，可以解析html或xml文档，返回Document
-            * parse：解析html或xml文档，返回Document
-                * parse​(File in, String charsetName)：解析xml或html文件的。
-                * parse​(String html)：解析xml或html字符串
-                * parse​(URL url, int timeoutMillis)：通过网络路径获取指定的html或xml的文档对象
-        2. Document：文档对象。代表内存中的dom树
-            * 获取Element对象
-                * getElementById​(String id)：根据id属性值获取唯一的element对象
-                * getElementsByTag​(String tagName)：根据标签名称获取元素对象集合
-                * getElementsByAttribute​(String key)：根据属性名称获取元素对象集合
-                * getElementsByAttributeValue​(String key, String value)：根据对应的属性名和属性值获取元素对象集合
-        3. Elements：元素Element对象的集合。可以当做 ArrayList&lt;Element&gt;来使用
-        4. Element：元素对象
-            1. 获取子元素对象
-                * getElementById​(String id)：根据id属性值获取唯一的element对象
-                * getElementsByTag​(String tagName)：根据标签名称获取元素对象集合
-                * getElementsByAttribute​(String key)：根据属性名称获取元素对象集合
-                * getElementsByAttributeValue​(String key, String value)：根据对应的属性名和属性值获取元素对象集合
-
-            2. 获取属性值
-                * String attr(String key)：根据属性名称获取属性值
-            3. 获取文本内容
-                * String text():获取文本内容
-                * String html():获取标签体的所有内容(包括字标签的字符串内容)
-        5. Node：节点对象
-            * 是Document和Element的父类
-
-        
-    * 快捷查询方式：
-        1. selector:选择器
-            * 使用的方法：Elements    select​(String cssQuery)
-                * 语法：参考Selector类中定义的语法
-        2. XPath：XPath即为XML路径语言，它是一种用来确定XML（标准通用标记语言的子集）文档中某部分位置的语言
-            * 使用Jsoup的Xpath需要额外导入jar包。
-            * 查询w3cshool参考手册，使用xpath的语法完成查询
-            * 代码：
-                //1.获取student.xml的path
-                String path = JsoupDemo6.class.getClassLoader().getResource(&quot;student.xml&quot;).getPath();
-                //2.获取Document对象
-                Document document = Jsoup.parse(new File(path), &quot;utf-8&quot;);
-        
-                //3.根据document对象，创建JXDocument对象
-                JXDocument jxDocument = new JXDocument(document);
-        
-                //4.结合xpath语法查询
-                //4.1查询所有student标签
-                List&lt;JXNode&gt; jxNodes = jxDocument.selN(&quot;//student&quot;);
-                for (JXNode jxNode : jxNodes) &#123;
-                    System.out.println(jxNode);
-                &#125;
-        
-                System.out.println(&quot;--------------------&quot;);
-        
-                //4.2查询所有student标签下的name标签
-                List&lt;JXNode&gt; jxNodes2 = jxDocument.selN(&quot;//student/name&quot;);
-                for (JXNode jxNode : jxNodes2) &#123;
-                    System.out.println(jxNode);
-                &#125;
-        
-                System.out.println(&quot;--------------------&quot;);
-        
-                //4.3查询student标签下带有id属性的name标签
-                List&lt;JXNode&gt; jxNodes3 = jxDocument.selN(&quot;//student/name[@id]&quot;);
-                for (JXNode jxNode : jxNodes3) &#123;
-                    System.out.println(jxNode);
-                &#125;
-                System.out.println(&quot;--------------------&quot;);
-                //4.4查询student标签下带有id属性的name标签 并且id属性值为itcast
-        
-                List&lt;JXNode&gt; jxNodes4 = jxDocument.selN(&quot;//student/name[@id=&#39;itcast&#39;]&quot;);
-                for (JXNode jxNode : jxNodes4) &#123;
-                    System.out.println(jxNode);
-                &#125;
-</code></pre>
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 
                 
             </div>
@@ -645,7 +477,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2021/07/02/xml/">http://example.com/2021/07/02/xml/</a>
+                    <a href="http://example.com/2021/07/04/tags/">http://example.com/2021/07/04/tags/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -852,9 +684,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
                 <a href="/2021/07/04/tags/">
                     <div class="card-image">
@@ -872,9 +705,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-07-04
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-07-04
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -883,6 +716,7 @@
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
@@ -893,7 +727,7 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/07/02/Servlut/">
+                <a href="/2021/07/02/xml/">
                     <div class="card-image">
                         
                         
