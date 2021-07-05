@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="XML">
+    <meta name="keywords" content="Bootstrap">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>XML学习笔记 | 大海的博客</title>
+    <title>Bootstrap | 大海的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -249,7 +249,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">XML学习笔记</h1>
+                    <h1 class="description center-align post-title">Bootstrap</h1>
                 </div>
             </div>
         </div>
@@ -271,12 +271,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/java/">
-                                <span class="chip bg-color">java</span>
-                            </a>
-                        
-                            <a href="/tags/XML/">
-                                <span class="chip bg-color">XML</span>
+                            <a href="/tags/Bootstrap/">
+                                <span class="chip bg-color">Bootstrap</span>
                             </a>
                         
                     </div>
@@ -300,7 +296,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-07-04
+                    2021-07-05
                 </div>
                 
 
@@ -324,277 +320,88 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="XML"><a href="#XML" class="headerlink" title="XML"></a>XML</h2><ul>
-<li>概念：Extensible Markup Language 可扩展标记语言<h4 id="可扩展：标签都是自定义的。-lt-user-gt-lt-student-gt"><a href="#可扩展：标签都是自定义的。-lt-user-gt-lt-student-gt" class="headerlink" title="可扩展：标签都是自定义的。 &lt;user&gt;  &lt;student&gt;"></a>可扩展：标签都是自定义的。 <code>&lt;user&gt;</code>  <code>&lt;student&gt;</code></h4>功能<blockquote>
-<p>存储数据<br>配置文件<br>在网络中传输<br>xml与html的区别<br>xml标签都是自定义的，html标签是预定义。<br>xml的语法严格，html语法松散<br>xml是存储数据的，html是展示数据</p>
-</blockquote>
-</li>
-</ul>
-<h5 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h5><blockquote>
-<p>xml文档的后缀名 .xml<br>xml第一行必须定义为文档声明<br>xml文档中有且仅有一个根标签<br>属性值必须使用引号(单双都可)引起来<br>标签必须正确关闭<br>xml标签名称区分大小写</p>
-</blockquote>
-<h5 id="快速入门"><a href="#快速入门" class="headerlink" title="快速入门"></a>快速入门</h5><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token operator">&lt;</span><span class="token operator">?</span>xml version<span class="token operator">=</span><span class="token string">'1.0'</span> <span class="token operator">?</span><span class="token operator">></span>
-			<span class="token generics"><span class="token punctuation">&lt;</span>users<span class="token punctuation">></span></span>
-				<span class="token operator">&lt;</span>user id<span class="token operator">=</span><span class="token string">'1'</span><span class="token operator">></span>
-					<span class="token generics"><span class="token punctuation">&lt;</span>name<span class="token punctuation">></span></span>zhangsan<span class="token operator">&lt;</span><span class="token operator">/</span>name<span class="token operator">></span>
-					<span class="token generics"><span class="token punctuation">&lt;</span>age<span class="token punctuation">></span></span><span class="token number">23</span><span class="token operator">&lt;</span><span class="token operator">/</span>age<span class="token operator">></span>
-					<span class="token generics"><span class="token punctuation">&lt;</span>gender<span class="token punctuation">></span></span>male<span class="token operator">&lt;</span><span class="token operator">/</span>gender<span class="token operator">></span>
-					<span class="token operator">&lt;</span>br<span class="token operator">/</span><span class="token operator">></span>
-				<span class="token operator">&lt;</span><span class="token operator">/</span>user<span class="token operator">></span>
-				
-				<span class="token operator">&lt;</span>user id<span class="token operator">=</span><span class="token string">'2'</span><span class="token operator">></span>
-					<span class="token generics"><span class="token punctuation">&lt;</span>name<span class="token punctuation">></span></span>lisi<span class="token operator">&lt;</span><span class="token operator">/</span>name<span class="token operator">></span>
-					<span class="token generics"><span class="token punctuation">&lt;</span>age<span class="token punctuation">></span></span><span class="token number">24</span><span class="token operator">&lt;</span><span class="token operator">/</span>age<span class="token operator">></span>
-					<span class="token generics"><span class="token punctuation">&lt;</span>gender<span class="token punctuation">></span></span>female<span class="token operator">&lt;</span><span class="token operator">/</span>gender<span class="token operator">></span>
-				<span class="token operator">&lt;</span><span class="token operator">/</span>user<span class="token operator">></span>
-			<span class="token operator">&lt;</span><span class="token operator">/</span>users<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h5 id="组成部分"><a href="#组成部分" class="headerlink" title="组成部分"></a>组成部分</h5><ol>
-<li>文档声明<ul>
-<li>格式：<code>&lt;?xml 属性列表 ?&gt;</code></li>
-<li>属性列表：<blockquote>
-<p>version：版本号，必须的属性</p>
-<blockquote>
-<p>encoding：编码方式。告知解析引擎当前文档使用的字符集，默认值：ISO-8859-1</p>
-<blockquote>
-<p>standalone：是否独立</p>
-</blockquote>
-</blockquote>
-</blockquote>
-</li>
-<li>取值：<blockquote>
-<p>yes：不依赖其他文件<br>no：依赖其他文件</p>
-</blockquote>
-</li>
-</ul>
-</li>
-<li>指令(了解)：结合css的<blockquote>
-<p><code>&lt;?xml-stylesheet type=&quot;text/css&quot; href=&quot;a.css&quot; ?&gt;</code></p>
-</blockquote>
-</li>
-<li>标签：标签名称自定义的</li>
-</ol>
+                <h2 id="BootStrap"><a href="#BootStrap" class="headerlink" title="BootStrap"></a>BootStrap</h2><p>一个前端开发的框架，<code>BootStrap</code>，来自Twitter公司，是目前很受欢迎的前端框架。BootStrap是基于<code>HTML</code>、<code>CSS</code>、<code>JavaScript</code>的，简易灵活，使得web开发更加快捷。</p>
 <ul>
-<li>规则：<blockquote>
-<p>名称可以包含字母、数字以及其他的字符 </p>
-<blockquote>
-<p>名称不能以数字或者标点符号开始 </p>
-<blockquote>
-<p>名称不能以字母 <code>xml（或者 XML、Xml 等等）开始</code></p>
-<blockquote>
-<p>名称不能包含空格 </p>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</li>
-</ul>
-<ol start="4">
-<li><p>属性：</p>
-<blockquote>
-<p>id属性值唯一</p>
-</blockquote>
-</li>
-<li><p>文本：</p>
-<blockquote>
-<p>CDATA区：在该区域中的数据会被原样展示<br>格式： <code>&lt;![CDATA[ 数据 ]]&gt;</code></p>
-</blockquote>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java">	 
-<span class="token comment">/**
-约束：规定xml文档的书写规则
-作为框架的使用者(程序员)：
-	1. 能够在xml中引入约束文档
-	2. 能够简单的读懂约束文档
-
-分类：
-	1. DTD:一种简单的约束技术
-	2. Schema:一种复杂的约束技术
-
-
-DTD：
-	引入dtd文档到xml文档中
-		内部dtd：将约束规则定义在xml文档中
-		外部dtd：将约束的规则定义在外部的dtd文件中
-			本地：&lt;!DOCTYPE 根标签名 SYSTEM "dtd文件的位置">
-			网络：&lt;!DOCTYPE 根标签名 PUBLIC "dtd文件名字" "dtd文件的位置URL">
-
-
-Schema:
-	引入：
-		1.填写xml文档的根元素
-		2.引入xsi前缀.  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		3.引入xsd文件命名空间.  xsi:schemaLocation="http://www.itcast.cn/xml  student.xsd"
-		4.为每一个xsd约束声明一个前缀,作为标识  xmlns="http://www.itcast.cn/xml" 
-
-	&lt;students   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		xmlns="http://www.itcast.cn/xml"
-		xsi:schemaLocation="http://www.itcast.cn/xml  student.xsd">
-*/</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-</ol>
-<h5 id="解析：操作xml文档，将文档中的数据读取到内存中"><a href="#解析：操作xml文档，将文档中的数据读取到内存中" class="headerlink" title="解析：操作xml文档，将文档中的数据读取到内存中"></a>解析：操作xml文档，将文档中的数据读取到内存中</h5><p>操作xml文档</p>
-<blockquote>
-<p>解析(读取)：将文档中的数据读取到内存中</p>
-<blockquote>
-<p>写入：将内存中的数据保存到xml文档中。持久化的存储</p>
-</blockquote>
-</blockquote>
-<ul>
-<li>解析xml的方式：<blockquote>
-<p>DOM：将标记语言文档一次性加载进内存，在内存中形成一颗dom树</p>
-</blockquote>
-<ul>
-<li>优点：操作方便，可以对文档进行CRUD的所有操作</li>
-<li>缺点：占内存</li>
-</ul>
-</li>
-<li>SAX：逐行读取，基于事件驱动的。<ul>
-<li>优点：不占内存。</li>
-<li>缺点：只能读取，不能增删改</li>
-</ul>
-</li>
-</ul>
-<h5 id="xml常见的解析器"><a href="#xml常见的解析器" class="headerlink" title="xml常见的解析器"></a>xml常见的解析器</h5><ol>
-<li>JAXP：sun公司提供的解析器，支持dom和sax两种思想</li>
-<li>DOM4J：一款非常优秀的解析器</li>
-<li>Jsoup：jsoup 是一款Java 的HTML解析器，可直接解析某个URL地址、HTML文本内容。它提供了一套非常省力的API，可通过DOM，CSS以及类似于jQuery的操作方法来取出和操作数据。</li>
-<li>PULL：Android操作系统内置的解析器，sax方式的。</li>
-</ol>
-<h4 id="Jsoup"><a href="#Jsoup" class="headerlink" title="Jsoup"></a>Jsoup</h4><p>jsoup 是一款Java 的HTML解析器，可直接解析某个URL地址、HTML文本内容。它提供了一套非常省力的API，可通过DOM，CSS以及类似于jQuery的操作方法来取出和操作数据。</p>
-<ul>
-<li>快速入门：<ul>
-<li>步骤：<ol>
-<li>导入jar包</li>
-<li>获取Document对象</li>
-<li>获取对应的标签Element对象</li>
-<li>获取数据</li>
-</ol>
-</li>
-</ul>
-</li>
-</ul>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//2.1获取student.xml的path</span>
-     <span class="token class-name">String</span> path <span class="token operator">=</span> <span class="token class-name">JsoupDemo1</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">.</span><span class="token function">getClassLoader</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getResource</span><span class="token punctuation">(</span><span class="token string">"student.xml"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getPath</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-     <span class="token comment">//2.2解析xml文档，加载文档进内存，获取dom树--->Document</span>
-     <span class="token class-name">Document</span> document <span class="token operator">=</span> <span class="token class-name">Jsoup</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">File</span><span class="token punctuation">(</span>path<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"utf-8"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-     <span class="token comment">//3.获取元素对象 Element</span>
-     <span class="token class-name">Elements</span> elements <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementsByTag</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-		
-     <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>elements<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-     <span class="token comment">//3.1获取第一个name的Element对象</span>
-     <span class="token class-name">Element</span> element <span class="token operator">=</span> elements<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-     <span class="token comment">//3.2获取数据</span>
-     <span class="token class-name">String</span> name <span class="token operator">=</span> element<span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-     <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h5 id="对象的使用："><a href="#对象的使用：" class="headerlink" title="对象的使用："></a>对象的使用：</h5><ul>
-<li><p>Jsoup：工具类，可以解析html或xml文档，返回Document</p>
-<ul>
-<li>parse：解析html或xml文档，返回Document<blockquote>
-<p>parse​(File in, String charsetName)：解析xml或html文件的。</p>
-<blockquote>
-<p>parse​(String html)：解析xml或html字符串</p>
-<blockquote>
-<p>parse​(URL url, int timeoutMillis)：通过网络路径获取指定的html或xml的文档对象</p>
-</blockquote>
-</blockquote>
-</blockquote>
-</li>
-</ul>
-</li>
-<li><p>Document：文档对象。代表内存中的dom树</p>
-<ul>
-<li>获取Element对象<ol>
-<li>getElementById​(String id)：根据id属性值获取唯一的element对象</li>
-<li>getElementsByTag​(String tagName)：根据标签名称获取元素对象集合</li>
-<li>getElementsByAttribute​(String key)：根据属性名称获取元素对象集合</li>
-<li>getElementsByAttributeValue​(String key, String value)：根据对应的属性名和属性值获取元素对象集合<blockquote>
-<p>Elements：元素Element对象的集合。可以当做 ArrayList<Element>来使用</p>
-<blockquote>
-<p>Element：元素对象</p>
-</blockquote>
-</blockquote>
-</li>
-</ol>
-</li>
-</ul>
-</li>
-<li><p>获取子元素对象</p>
-<ul>
-<li><p>getElementById​(String id)：根据id属性值获取唯一的element对象</p>
-</li>
-<li><p>getElementsByTag​(String tagName)：根据标签名称获取元素对象集合</p>
-</li>
-<li><p>getElementsByAttribute​(String key)：根据属性名称获取元素对象集合</p>
-</li>
-<li><p>getElementsByAttributeValue​(String key, String value)：根据对应的属性名和属性值获取元素对象集合</p>
-<ul>
-<li>获取属性值<ul>
-<li><code> String attr(String key)</code>：根据属性名称获取属性值</li>
-</ul>
-</li>
-<li>获取文本内容<ul>
-<li><code>String text()</code>:获取文本内容</li>
-<li><code>String html()</code>:获取标签体的所有内容(包括字标签的字符串内容)</li>
-</ul>
-</li>
-<li>Node：节点对象<ul>
-<li>是<code>Document</code>和<code>Element</code>的父类</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>快捷查询方式：</p>
+<li>优点<blockquote>
 <ol>
-<li><code>selector</code>:选择器<blockquote>
-<p>使用的方法：<code>Elements    select​(String cssQuery)</code><br>语法：参考<code>Selector</code>类中定义的语法</p>
+<li>丰富了  <code>CSS</code>和<code>JS</code>插件</li>
+<li>响应式布局(同一套页面可以适配不同的设备)</li>
+</ol>
 </blockquote>
 </li>
-<li><code>XPath</code>：<code>XPath</code>即为<code>XML</code>路径语言，它是一种用来确定<code>XML</code>（标准通用标记语言的子集）文档中某部分位置的语言<blockquote>
-<p>使用<code>Jsoup</code>的<code>Xpat</code>h需要额外导入jar包。<br>查询w3cshool参考手册，使用<code>xpath</code>的语法完成查询</p>
-</blockquote>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//1.获取student.xml的path</span>
-<span class="token class-name">String</span> path <span class="token operator">=</span> <span class="token class-name">JsoupDemo6</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">.</span><span class="token function">getClassLoader</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getResource</span><span class="token punctuation">(</span><span class="token string">"student.xml"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getPath</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">//2.获取Document对象</span>
-<span class="token class-name">Document</span> document <span class="token operator">=</span> <span class="token class-name">Jsoup</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">File</span><span class="token punctuation">(</span>path<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"utf-8"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-			
-<span class="token comment">//3.根据document对象，创建JXDocument对象</span>
-<span class="token class-name">JXDocument</span> jxDocument <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">JXDocument</span><span class="token punctuation">(</span>document<span class="token punctuation">)</span><span class="token punctuation">;</span>
-			
- <span class="token comment">//4.结合xpath语法查询</span>
-<span class="token comment">//4.1查询所有student标签</span>
-<span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">JXNode</span><span class="token punctuation">></span></span> jxNodes <span class="token operator">=</span> jxDocument<span class="token punctuation">.</span><span class="token function">selN</span><span class="token punctuation">(</span><span class="token string">"//student"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">JXNode</span> jxNode <span class="token operator">:</span> jxNodes<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>jxNode<span class="token punctuation">)</span><span class="token punctuation">;</span>
- <span class="token punctuation">&#125;</span>
-			
-<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"--------------------"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-			
-<span class="token comment">//4.2查询所有student标签下的name标签</span>
-<span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">JXNode</span><span class="token punctuation">></span></span> jxNodes2 <span class="token operator">=</span> jxDocument<span class="token punctuation">.</span><span class="token function">selN</span><span class="token punctuation">(</span><span class="token string">"//student/name"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">JXNode</span> jxNode <span class="token operator">:</span> jxNodes2<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-			            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>jxNode<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
-			
- <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"--------------------"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-			
-<span class="token comment">//4.3查询student标签下带有id属性的name标签</span>
-<span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">JXNode</span><span class="token punctuation">></span></span> jxNodes3 <span class="token operator">=</span> jxDocument<span class="token punctuation">.</span><span class="token function">selN</span><span class="token punctuation">(</span><span class="token string">"//student/name[@id]"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">JXNode</span> jxNode <span class="token operator">:</span> jxNodes3<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>jxNode<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
-<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"--------------------"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
- <span class="token comment">//4.4查询student标签下带有id属性的name标签 并且id属性值为itcast</span>
-			
-<span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">JXNode</span><span class="token punctuation">></span></span> jxNodes4 <span class="token operator">=</span> jxDocument<span class="token punctuation">.</span><span class="token function">selN</span><span class="token punctuation">(</span><span class="token string">"//student/name[@id='itcast']"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">JXNode</span> jxNode <span class="token operator">:</span> jxNodes4<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>jxNode<span class="token punctuation">)</span><span class="token punctuation">;</span>
- <span class="token punctuation">&#125;</span>
-					<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ul>
+<h3 id="快速了解"><a href="#快速了解" class="headerlink" title="快速了解"></a>快速了解</h3><ol>
+<li>下载<code>bootstrap </code> </li>
+<li>将文件引入项目</li>
+<li>创建html页面,引入必要的资源文件</li>
+</ol>
+<pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">></span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>zh-CN<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
+		    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>utf-8<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+		    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">http-equiv</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>X-UA-Compatible<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>IE=edge<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+		    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>viewport<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>width=device-width, initial-scale=1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+		    <span class="token comment">&lt;!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ --></span>
+		    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span>Bootstrap HelloWorld<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span>
+		
+		    <span class="token comment">&lt;!-- Bootstrap --></span>
+		    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>css/bootstrap.min.css<span class="token punctuation">"</span></span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+		
+		
+		    <span class="token comment">&lt;!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) --></span>
+		    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>js/jquery-3.2.1.min.js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+		    <span class="token comment">&lt;!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 --></span>
+		    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>js/bootstrap.min.js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span>你好，世界！<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="响应式布局"><a href="#响应式布局" class="headerlink" title="响应式布局"></a>响应式布局</h3><ul>
+<li>同一套页面可以兼容不同分辨率的设备</li>
+<li>实现依赖棚格系统：将一行平均分为12个格子，指定相应元素占几个格子<br>实现方式<blockquote>
+<ol>
+<li>定义容器<ol>
+<li><code>container</code> ：固定宽度（屏幕两边留白）</li>
+<li><code>container-fluid</code> ：任何设备占比100%</li>
 </ol>
 </li>
+<li>定义行<ul>
+<li><code>row</code></li>
+</ul>
+</li>
+<li>定义元素<ul>
+<li><code>col-设备代号-格子数目</code><ul>
+<li>设备代号</li>
+</ul>
+<ol>
+<li>xs：超小屏幕-手机</li>
+<li>sm: 小屏幕-平板</li>
+<li>md: 中等屏幕-桌面显示器</li>
+<li>lg：大屏幕-大桌面显示器<br>ps:不管是否固定宽度，每一行最多只能12个格子，超出则换行。</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+<h3 id="CSS和JS插件"><a href="#CSS和JS插件" class="headerlink" title="CSS和JS插件"></a>CSS和JS插件</h3><p><a target="_blank" rel="noopener" href="https://v3.bootcss.com/css/#tables">全局<code>CSS</code>样式（常用）</a></p>
+<ul>
+<li>按钮:<code>class=&quot;btn btn-default&quot;</code>defaul可修改</li>
+<li>图片：<code>class=&quot;img-responsive&quot;</code>响应式图片</li>
+<li>表格<ul>
+<li>table</li>
+<li><code>table-bordered</code>带边框的表格</li>
+<li><code>table-hover </code>通过添加 .table-hover 类可以让 <code>tbody</code> 中的每一行对鼠标悬停状态作出响应  </li>
+</ul>
+</li>
+<li>表单:<code>class=&quot;form-control&quot;</code><br>组件</li>
+<li>导航条<code>&lt;nav class=&quot;navbar navbar-default&quot;&gt;</code>颜色反转通过添加 <code>.navbar-inverse 类可以改变导航条的外观。</code></li>
+<li>分页条<br>插件</li>
+<li>轮播图</li>
 </ul>
 
                 
@@ -622,7 +429,7 @@ Schema:
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2021/07/04/xml/">http://example.com/2021/07/04/xml/</a>
+                    <a href="http://example.com/2021/07/05/bootstrap/">http://example.com/2021/07/05/bootstrap/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -660,12 +467,8 @@ Schema:
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/java/">
-                                    <span class="chip bg-color">java</span>
-                                </a>
-                            
-                                <a href="/tags/XML/">
-                                    <span class="chip bg-color">XML</span>
+                                <a href="/tags/Bootstrap/">
+                                    <span class="chip bg-color">Bootstrap</span>
                                 </a>
                             
                         </div>
@@ -837,9 +640,10 @@ Schema:
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
                 <a href="/2021/07/05/bootstrap/">
                     <div class="card-image">
@@ -856,9 +660,9 @@ Schema:
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-07-05
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-07-05
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -871,6 +675,7 @@ Schema:
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -889,12 +694,12 @@ Schema:
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/07/04/jdbc/">
+                <a href="/2021/07/04/xml/">
                     <div class="card-image">
                         
-                        <img src="https://pic.netbian.com/tupian/26010.html" class="responsive-img" alt="JDBC学习笔记">
+                        <img src="https://pic.netbian.com/tupian/26010.html" class="responsive-img" alt="XML学习笔记">
                         
-                        <span class="card-title">JDBC学习笔记</span>
+                        <span class="card-title">XML学习笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -926,8 +731,8 @@ Schema:
                         <span class="chip bg-color">java</span>
                     </a>
                     
-                    <a href="/tags/JDBC/">
-                        <span class="chip bg-color">JDBC</span>
+                    <a href="/tags/XML/">
+                        <span class="chip bg-color">XML</span>
                     </a>
                     
                 </div>
