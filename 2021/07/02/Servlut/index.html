@@ -401,7 +401,101 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <p>首先来点基础小知识</p>
+<blockquote>
+<p>网络通信三要素</p>
+<ol>
+<li>IP：电子设备(计算机)在网络中的唯一标识。</li>
+<li>端口：应用程序在计算机中的唯一标识。 0~65536</li>
+<li>传输协议：规定了数据传输的规则<ul>
+<li>tcp:安全协议，三次握手。 速度稍慢</li>
+<li>udp：不安全协议。 速度快</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<h2 id="Servlet"><a href="#Servlet" class="headerlink" title="Servlet"></a>Servlet</h2><p>运行在服务器端的小程序</p>
+<blockquote>
+<p><code>Servlet</code> 就是一个接口，定义了Java类被浏览器访问到的规则。<br>实现Servlet接口，复写方法。</p>
+</blockquote>
+<p>快速入门</p>
+<ol>
+<li>创建JavaEE项目</li>
+<li>定义一个类,实现<code>Servlet</code>接口</li>
+</ol>
+<ul>
+<li><code>public class ServletDemo1 implements Servlet</code></li>
+</ul>
+<ol start="3">
+<li>实现接口中的方法</li>
+<li>配置Servlet<pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token comment">&lt;!-- 在web.xml中配置： --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>servlet</span><span class="token punctuation">></span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>servlet-name</span><span class="token punctuation">></span></span>demo1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>servlet-name</span><span class="token punctuation">></span></span>
+	 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>servlet-class</span><span class="token punctuation">></span></span>cn.itcast.web.servlet.ServletDemo1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>servlet-class</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>servlet</span><span class="token punctuation">></span></span>
+		
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>servlet-mapping</span><span class="token punctuation">></span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>servlet-name</span><span class="token punctuation">></span></span>demo1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>servlet-name</span><span class="token punctuation">></span></span>
+	 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>url-pattern</span><span class="token punctuation">></span></span>/demo1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>url-pattern</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>servlet-mapping</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ol>
+<h2 id="Tomcat执行Servlet的原理"><a href="#Tomcat执行Servlet的原理" class="headerlink" title="Tomcat执行Servlet的原理"></a>Tomcat执行Servlet的原理</h2><ol>
+<li>当服务器接受到客户端浏览器的请求后，会解析请求URL路径，获取访问的Servlet的资源路径</li>
+<li>查找web.xml文件，是否有对应的<code>&lt;url-pattern&gt; </code>标签体内容</li>
+<li>如果有，则在找到对应的<code>&lt;servlet-class&gt;</code>全类名</li>
+<li>tomcat会将字节码文件加载进内存，并且创建其对象</li>
+<li>调用其方法</li>
+</ol>
+<h2 id="Servlet的生命周期"><a href="#Servlet的生命周期" class="headerlink" title="Servlet的生命周期"></a>Servlet的生命周期</h2><ol>
+<li>初始化方法<blockquote>
+<p><code>init</code>方法,在serlet被创建时执行，只会执行一次。 </p>
+</blockquote>
+</li>
+</ol>
+<ul>
+<li>Servlet配置执行的创建时机<ul>
+<li>第一次被访问时创建：<code>&lt;load-on-startup&gt;</code>的值为负数</li>
+<li>在服务器启动时创建: <code>&lt;load-on-startup&gt;</code>的值为0或正整数</li>
+<li>Servlet的<code>init</code>方法，只执行一次，说明一个Servlet在内存中只存在一个对象，Servlet是单例的<ol>
+<li>多个用户同时访问时，可能存在线程安全问题。</li>
+<li>解决：尽量不要在Servlet中定义成员变量。即使定义了成员变量，也不要对修改值</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li>提供服务方法<blockquote>
+<p><code>Service</code>方法，被访问时执行，执行多次。</p>
+</blockquote>
+<ul>
+<li>每次访问Servlet时，Service方法都会被调用一次。</li>
+</ul>
+</li>
+<li>销毁方法<blockquote>
+<p><code>destory</code>方法，在服务器正常关闭时执行，执行一次。</p>
+</blockquote>
+<ul>
+<li>Servlet被销毁时执行。服务器关闭时，Servlet则被销毁<ul>
+<li>只有服务器正常关闭时，才会执行destroy方法。</li>
+<li>destroy方法在Servlet被销毁之前执行，一般用于释放资源</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>ServletCogfig</code>方法<blockquote>
+<p>Servlet的配置对象</p>
+</blockquote>
+</li>
+<li><code>getServletInfo</code>方法<blockquote>
+<p>获取Servlet的一些信息，版本，作者等……</p>
+</blockquote>
+</li>
+</ol>
+<ul>
+<li>重点掌握1、2、4；了解4、5 </li>
+</ul>
+
                 
             </div>
             <hr/>
