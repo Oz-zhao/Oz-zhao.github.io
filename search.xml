@@ -4,19 +4,6 @@
   
     
     <entry>
-      <title></title>
-      <link href="/2021/07/06/servlet-http-requst/"/>
-      <url>/2021/07/06/servlet-http-requst/</url>
-      
-        <content type="html"><![CDATA[<h2 id="HTTP-Hyper-Text-Transfer-Protocol"><a href="#HTTP-Hyper-Text-Transfer-Protocol" class="headerlink" title="HTTP(Hyper Text Transfer Protocol)"></a>HTTP(Hyper Text Transfer Protocol)</h2><p>超文本传输协议:定义了客户端和服务端在通信时发送数据的格式。<br>特点：</p><ol><li>基于TCP/IP的高级协议</li><li>默认端口号：80</li><li>基于请求响应模型：一次请求对应一次响应</li><li>无状态时：每次请求之间相互独立，不能交互数据</li></ol><h2 id="请求消息的数据格式"><a href="#请求消息的数据格式" class="headerlink" title="请求消息的数据格式"></a>请求消息的数据格式</h2><h3 id="请求行"><a href="#请求行" class="headerlink" title="请求行"></a>请求行</h3><blockquote><p>请求方式 请求url 请求协议/版本<br>GET/login.html  HTTP/1.1</p></blockquote><ul><li>请求方式：</li></ul><ul><li>HTTP协议有7中请求方式，常用的有2种</li></ul><ol><li>GET<blockquote><p>请求参数在请求行中，在url后。<br>请求的url长度有限制的<br>不太安全</p></blockquote></li><li>POST<blockquote><p>请求参数在请求体中<br>请求的url长度没有限制的<br>相对安全</p></blockquote><h3 id="请求头"><a href="#请求头" class="headerlink" title="请求头"></a>请求头</h3>常见的请求头</li><li><code>User-Agent</code>：浏览器告诉服务器，我访问你使用的浏览器版本信息<ul><li>可以在服务器端获取该头的信息，解决浏览器的兼容性问题</li></ul></li><li><code>Referer</code>：<a href="http://localhost/login.html">http://localhost/login.html</a><ul><li> 告诉服务器，我(当前请求)从哪里来？<blockquote><p> 作用：</p><ol><li>防盗链：</li><li>统计工作：</li></ol></blockquote><h3 id="请求空行"><a href="#请求空行" class="headerlink" title="请求空行"></a>请求空行</h3></li></ul></li></ol><ul><li>空行，就是用于分割POST请求的请求头，和请求体的。<h3 id="请求体-正文"><a href="#请求体-正文" class="headerlink" title="请求体(正文)"></a>请求体(正文)</h3></li><li>封装POST请求消息的请求参数<h2 id="响应消息的数据格式"><a href="#响应消息的数据格式" class="headerlink" title="响应消息的数据格式"></a>响应消息的数据格式</h2></li></ul><h2 id="Request"><a href="#Request" class="headerlink" title="Request"></a>Request</h2><blockquote><p>request对象和response对象的原理:<br>request和response对象是由服务器创建的,我们来使用它们;</p><p>request对象是来获取请求消息，response对象是来设置响应消息。</p></blockquote><p><code>ServletRequest</code>接口(继承)—&gt;<code>HttpRequest</code>接口(实现)—&gt;org.apache.catalina.connector.RequestFacade 类(tomcat)</p><h3 id="Request功能"><a href="#Request功能" class="headerlink" title="Request功能"></a>Request功能</h3><ol><li>获取请求数据<ul><li>获取请求行数据<blockquote><p><code>GET /day14/demo1?name=zhangsan HTTP/1.1</code></p></blockquote></li></ul></li></ol><ul><li>1.获取请求方式：GET<ul><li><code>String getMethod() </code></li></ul></li><li>2.获取虚拟目录：/day14(重点掌握)<ul><li><code>String getContextPath()</code></li></ul></li><li>3.获取Servlet路径：/demo1<ul><li><code>String getServletPath()</code></li></ul></li><li>4.获取get方式请求参数：name=zhangsan<ul><li><code>String getQueryString()</code></li></ul></li><li>5.获取请求URI：/day14/demo1（重点掌握）<ul><li> <code>String getRequestURI():/day14/demo1</code></li><li><code> StringBuffer getRequestURL()</code> :<a href="http://localhost/day14/demo1">http://localhost/day14/demo1</a></li><li> URL:统一资源定位符 ： <a href="http://localhost/day14/demo1%EF%BC%88%E4%BB%A3%E8%A1%A8%E7%9A%84%E8%8C%83%E5%9B%B4%E6%AF%94URI%E5%B0%8F%EF%BC%89">http://localhost/day14/demo1（代表的范围比URI小）</a></li><li> URI：统一资源标识符 : /day14/demo1（代表的范围更大）</li></ul></li><li>6.获取协议及版本：HTTP/1.1<ul><li><code>String getProtocol()</code></li></ul></li><li>7获取客户机的IP地址：<ul><li><code>String getRemoteAddr()</code></li></ul></li></ul><ol start="2"><li>获取请求头数据<br>方法：</li></ol><ul><li><code>String getHeader(String name)</code>:通过请求头的名称获取请求头的值&lt;重点掌握&gt;</li><li><code>Enumeration&lt;String&gt; getHeaderNames()</code>:获取所有的请求头名称</li></ul><ol start="3"><li>获取请求体的数据<br>请求体：只有POST请求方式，才有请求体，在请求体中封装了POST请求的请求参数</li></ol><ul><li>步骤<ol><li>获取流对象    * <code>BufferedReader getReader()</code>：获取字符输入流，只能操作字符数据    * <code>ServletInputStream getInputStream()</code>：获取字节输入流，可以操作所有类型数据</li><li>再从流对象中拿数据</li></ol></li></ul><h2 id="其他的功能"><a href="#其他的功能" class="headerlink" title="其他的功能"></a>其他的功能</h2><ol><li>获取请求参数通用方式&lt;不论get还是post请求都可以用以下方式请求&gt;<ul><li><code>String getParameter(String name)</code>:根据参数名称获取参数值&lt;常用&gt;</li><li><code>String[] getParameterValues(String name)</code>:根据参数名称获取参数值的数组</li><li><code>Enumeration&lt;String&gt; getParameterNames()</code>:获取所有请求的参数名称</li><li><code>Map&lt;String,String[]&gt; getParameterMap()</code>:获取所有参数的map集合&lt;键和值的情况&gt;&lt;常用&gt;</li></ul></li><li>请求转发&lt;一种在服务器内部的资源跳转方式&gt;<ul><li>步骤<ol><li>通过request对象获取请求转发器对象：<code>RequestDispatcher getRequestDispatcher(String path)</code></li><li>使用<code>RequestDispatcher</code>对象来进行转发：<code>forward(ServletRequest request, ServletResponse response) </code></li></ol></li><li>特点<ol><li>浏览器地址栏路径不发生变化</li><li>只能转发到当前服务器内部资源中。</li><li>转发是一次请求</li></ol></li></ul></li></ol><ol start="3"><li>共享数据</li></ol><ul><li><p>域对象：一个又作用范围的对象，可以在范围内共享数据</p></li><li><p>request域：代表一次请求的范围，一般用于请求转发的多个资源中共享数据</p><blockquote><p>方法</p><ol><li><code>void setAttribute(String name,Object obj)</code>:存储数据</li><li><code>Object getAttitude(String name)</code>:通过键获取值</li><li><code>void removeAttribute(String name)</code>:通过键移除键值对</li></ol></blockquote></li></ul><ol start="4"><li>获取<code>ServletContext</code><ul><li>方法：<code>getServletContext()</code></li></ul></li></ol>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>Servlet</title>
       <link href="/2021/07/06/servlut/"/>
       <url>/2021/07/06/servlut/</url>
@@ -34,6 +21,35 @@
         <tags>
             
             <tag> Servlet </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Servlet-HTTP-Request</title>
+      <link href="/2021/07/06/servlet-http-requst/"/>
+      <url>/2021/07/06/servlet-http-requst/</url>
+      
+        <content type="html"><![CDATA[<h2 id="HTTP-Hyper-Text-Transfer-Protocol"><a href="#HTTP-Hyper-Text-Transfer-Protocol" class="headerlink" title="HTTP(Hyper Text Transfer Protocol)"></a>HTTP(Hyper Text Transfer Protocol)</h2><p>超文本传输协议:定义了客户端和服务端在通信时发送数据的格式。<br>特点：</p><ol><li>基于TCP/IP的高级协议</li><li>默认端口号：80</li><li>基于请求响应模型：一次请求对应一次响应</li><li>无状态时：每次请求之间相互独立，不能交互数据</li></ol><h2 id="请求消息的数据格式"><a href="#请求消息的数据格式" class="headerlink" title="请求消息的数据格式"></a>请求消息的数据格式</h2><h3 id="请求行"><a href="#请求行" class="headerlink" title="请求行"></a>请求行</h3><blockquote><p>请求方式 请求url 请求协议/版本<br>GET/login.html  HTTP/1.1</p></blockquote><ul><li>请求方式：</li></ul><ul><li>HTTP协议有7中请求方式，常用的有2种</li></ul><ol><li>GET<blockquote><p>请求参数在请求行中，在url后。<br>请求的url长度有限制的<br>不太安全</p></blockquote></li><li>POST<blockquote><p>请求参数在请求体中<br>请求的url长度没有限制的<br>相对安全</p></blockquote><h3 id="请求头"><a href="#请求头" class="headerlink" title="请求头"></a>请求头</h3>常见的请求头</li><li><code>User-Agent</code>：浏览器告诉服务器，我访问你使用的浏览器版本信息<ul><li>可以在服务器端获取该头的信息，解决浏览器的兼容性问题</li></ul></li><li><code>Referer</code>：<a href="http://localhost/login.html">http://localhost/login.html</a><ul><li> 告诉服务器，我(当前请求)从哪里来？<blockquote><p> 作用：</p><ol><li>防盗链：</li><li>统计工作：</li></ol></blockquote><h3 id="请求空行"><a href="#请求空行" class="headerlink" title="请求空行"></a>请求空行</h3></li></ul></li></ol><ul><li>空行，就是用于分割POST请求的请求头，和请求体的。<h3 id="请求体-正文"><a href="#请求体-正文" class="headerlink" title="请求体(正文)"></a>请求体(正文)</h3></li><li>封装POST请求消息的请求参数<h2 id="响应消息的数据格式"><a href="#响应消息的数据格式" class="headerlink" title="响应消息的数据格式"></a>响应消息的数据格式</h2></li></ul><h2 id="Request"><a href="#Request" class="headerlink" title="Request"></a>Request</h2><blockquote><p>request对象和response对象的原理:<br>request和response对象是由服务器创建的,我们来使用它们;</p><p>request对象是来获取请求消息，response对象是来设置响应消息。</p></blockquote><p><code>ServletRequest</code>接口(继承)—&gt;<code>HttpRequest</code>接口(实现)—&gt;org.apache.catalina.connector.RequestFacade 类(tomcat)</p><h3 id="Request功能"><a href="#Request功能" class="headerlink" title="Request功能"></a>Request功能</h3><ol><li>获取请求数据<ul><li>获取请求行数据<blockquote><p><code>GET /day14/demo1?name=zhangsan HTTP/1.1</code></p></blockquote></li></ul></li></ol><ul><li>1.获取请求方式：GET<ul><li><code>String getMethod() </code></li></ul></li><li>2.获取虚拟目录：/day14(重点掌握)<ul><li><code>String getContextPath()</code></li></ul></li><li>3.获取Servlet路径：/demo1<ul><li><code>String getServletPath()</code></li></ul></li><li>4.获取get方式请求参数：name=zhangsan<ul><li><code>String getQueryString()</code></li></ul></li><li>5.获取请求URI：/day14/demo1（重点掌握）<ul><li> <code>String getRequestURI():/day14/demo1</code></li><li><code> StringBuffer getRequestURL()</code> :<a href="http://localhost/day14/demo1">http://localhost/day14/demo1</a></li><li> URL:统一资源定位符 ： <a href="http://localhost/day14/demo1%EF%BC%88%E4%BB%A3%E8%A1%A8%E7%9A%84%E8%8C%83%E5%9B%B4%E6%AF%94URI%E5%B0%8F%EF%BC%89">http://localhost/day14/demo1（代表的范围比URI小）</a></li><li> URI：统一资源标识符 : /day14/demo1（代表的范围更大）</li></ul></li><li>6.获取协议及版本：HTTP/1.1<ul><li><code>String getProtocol()</code></li></ul></li><li>7获取客户机的IP地址：<ul><li><code>String getRemoteAddr()</code></li></ul></li></ul><ol start="2"><li>获取请求头数据<br>方法：</li></ol><ul><li><code>String getHeader(String name)</code>:通过请求头的名称获取请求头的值&lt;重点掌握&gt;</li><li><code>Enumeration&lt;String&gt; getHeaderNames()</code>:获取所有的请求头名称</li></ul><ol start="3"><li>获取请求体的数据<br>请求体：只有POST请求方式，才有请求体，在请求体中封装了POST请求的请求参数</li></ol><ul><li>步骤<ol><li>获取流对象    * <code>BufferedReader getReader()</code>：获取字符输入流，只能操作字符数据    * <code>ServletInputStream getInputStream()</code>：获取字节输入流，可以操作所有类型数据</li><li>再从流对象中拿数据</li></ol></li></ul><h2 id="其他的功能"><a href="#其他的功能" class="headerlink" title="其他的功能"></a>其他的功能</h2><ol><li>获取请求参数通用方式&lt;不论get还是post请求都可以用以下方式请求&gt;<ul><li><code>String getParameter(String name)</code>:根据参数名称获取参数值&lt;常用&gt;</li><li><code>String[] getParameterValues(String name)</code>:根据参数名称获取参数值的数组</li><li><code>Enumeration&lt;String&gt; getParameterNames()</code>:获取所有请求的参数名称</li><li><code>Map&lt;String,String[]&gt; getParameterMap()</code>:获取所有参数的map集合&lt;键和值的情况&gt;&lt;常用&gt;</li></ul></li><li>请求转发&lt;一种在服务器内部的资源跳转方式&gt;<ul><li>步骤<ol><li>通过request对象获取请求转发器对象：<code>RequestDispatcher getRequestDispatcher(String path)</code></li><li>使用<code>RequestDispatcher</code>对象来进行转发：<code>forward(ServletRequest request, ServletResponse response) </code></li></ol></li><li>特点<ol><li>浏览器地址栏路径不发生变化</li><li>只能转发到当前服务器内部资源中。</li><li>转发是一次请求</li></ol></li></ul></li></ol><ol start="3"><li>共享数据</li></ol><ul><li><p>域对象：一个又作用范围的对象，可以在范围内共享数据</p></li><li><p>request域：代表一次请求的范围，一般用于请求转发的多个资源中共享数据</p><blockquote><p>方法</p><ol><li><code>void setAttribute(String name,Object obj)</code>:存储数据</li><li><code>Object getAttitude(String name)</code>:通过键获取值</li><li><code>void removeAttribute(String name)</code>:通过键移除键值对</li></ol></blockquote></li></ul><ol start="4"><li>获取<code>ServletContext</code><ul><li>方法：<code>getServletContext()</code></li></ul></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> Markdown </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Servlet </tag>
+            
+            <tag> HTTP </tag>
+            
+            <tag> Request </tag>
             
         </tags>
       
