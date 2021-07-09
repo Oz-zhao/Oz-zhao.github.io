@@ -414,6 +414,27 @@
 <ul>
 <li>重点掌握1、2、4；了解4、5 </li>
 </ul>
+<h2 id="Servlet的体系结构"><a href="#Servlet的体系结构" class="headerlink" title="Servlet的体系结构"></a>Servlet的体系结构</h2><blockquote>
+<p>Servlet-接口–》<code>GenericServlet</code>-抽象类–》<code> HttpServlet</code>-抽象类 </p>
+</blockquote>
+<p><code>GenericServlet</code>：将<code>servlet</code>接口中的其他的方法做了默认空实现，只将<code>service()</code>方法作为抽象，将来定义<code>Servlet</code>类时，可以继承GenericServlet，实现<code>service（）</code>方法即可。</p>
+<p><code>HttpServlet</code>：对http协议的一种封装，简化操作。</p>
+<ol>
+<li>定义类继承HttpServlet</li>
+<li>复写doGet/dPost方法</li>
+</ol>
+<h2 id="Servlet相关配置"><a href="#Servlet相关配置" class="headerlink" title="Servlet相关配置"></a>Servlet相关配置</h2><ul>
+<li>urlpartten:Servlet访问路径</li>
+</ul>
+<ol>
+<li>一个Servlet可以定义多个访问路径 ：<code> @WebServlet(&#123;&quot;/d4&quot;,&quot;/dd4&quot;,&quot;/ddd4&quot;&#125;)</code></li>
+<li>路径定义规则：</li>
+</ol>
+<ul>
+<li>/xxx：路径匹配</li>
+<li>/xxx/xxx:多层路径，目录结构</li>
+<li>*.do：扩展名匹配</li>
+</ul>
 
                 
             </div>
